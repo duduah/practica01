@@ -1,29 +1,30 @@
-# Ejercicio 1
+A continuación se muestran las respuestas del ejercicio 1 de la práctica de git.
 
-### 1. ¿Qué comando utilizaste en el paso 11?
+------
+### 1. ¿Qué comando utilizaste en el paso 11?
 ```
 $ git reset --hard HEAD~1
 ```
 
-#### ¿Por qué?
+#### ¿Por qué?
 El `reset` mueve el `HEAD` y la rama a la que apunta a donde se indique (en este caso `HEAD~1` al commit padre que, al tratarse del primer commit, se queda donde está).
 
 Con el parámetro `hard` además indicamos que la *working copy* y el *staging area* también se deshacen, cargando el contenido del commit al que nos hemos dirigido al ejecutar este `reset`.
 
-### 2. ¿Qué comando o comandos utilizaste en el paso 12?
+### 2. ¿Qué comando o comandos utilizaste en el paso 12?
 Mediante un `reflog` localizo el commit al que quiero dirigirme y:
 
 ```
 $ git reset --hard 35bc8ec
 ```
 
-#### ¿Por qué?
+#### ¿Por qué?
 En esta ocasión vuelvo a indicar con el `reset` que nuestro `HEAD` y la rama **styled** a la que está apuntando  se muevan al commit **35bc8ec**. Usando `--hard` indicamos que machaque la *working copy* actual con el contenido de dicho commit y vacíe el *staging area*.
 
-### 3. El merge del paso 13, ¿Causó algún conflicto?
+### 3. El merge del paso 13, ¿Causó algún conflicto?
 No, ninguno.
 
-#### ¿Por qué?
+#### ¿Por qué?
 Porque el commit al que apunta la rama actual **styled** es hijo del commit al que apunta la rama absorvida **master**. Es decir, la rama **styled** ya tiene todos los commits que tiene **master** (uno, para ser más exactos).
 
 De hecho así lo indica git en la consola:
@@ -34,7 +35,7 @@ Already up-to-date.
 ```
 
 
-### 4. El merge del paso 19, ¿Causó algún conflicto?
+### 4. El merge del paso 19, ¿Causó algún conflicto?
 Si.
 
 ```
@@ -45,10 +46,10 @@ CONFLICT (content): Merge conflict in git-nuestro.md
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-#### ¿Por qué?
+#### ¿Por qué?
 La rama **styled** apuntaba a un commit cuyos ancestros no contemplaban al commit al que apuntaba **htmlify**. Es decir, se nos presenta un grafo con bifurcación en el que el grafo de la rama **styled** no contiene el commit de la rama **htmlify**.
 
-### 5. El merge del paso 21, ¿Causó algún conflicto?
+### 5. El merge del paso 21, ¿Causó algún conflicto?
 No, ninguno.
 
 ```
@@ -58,10 +59,10 @@ Fast-forward
  1 file changed, 9 insertions(+), 9 deletions(-)
 ```
 
-#### ¿Por qué?
+#### ¿Por qué?
 Porque la rama **master** absorve la rama **styled**, la cual contiene todos los commits que contemplaba **master**. Así lo indica también la consola con el `Fast-forward`.
 
-### 6. ¿Qué comando o comandos utilizaste en el paso 25?
+### 6. ¿Qué comando o comandos utilizaste en el paso 25?
 
 $ git log --graph --pretty=oneline
 
@@ -77,26 +78,26 @@ $ git log --graph --pretty=oneline
 ```
 
 
-### 7. El merge del paso 26, ¿Podría ser fast forward?
+### 7. El merge del paso 26, ¿Podría ser fast forward?
 Si, podría ser *fast forward*.
-#### ¿Por qué?
+#### ¿Por qué?
 Porque la rama **title** contiene todos los commits que contiene la rama **master**.
 
-### 8. ¿Qué comando o comandos utilizaste en el paso 27?
+### 8. ¿Qué comando o comandos utilizaste en el paso 27?
 
 `$ git reset HEAD~1`
 
-### 9. ¿Qué comando o comandos utilizaste en el paso 28?
+### 9. ¿Qué comando o comandos utilizaste en el paso 28?
 
 `$ git checkout git-nuestro.md`
 
-### 10. ¿Qué comando o comandos utilizaste en el paso 29?
+### 10. ¿Qué comando o comandos utilizaste en el paso 29?
 
 `$ git branch -D title`
 
 He tenido que forzarlo ya que ese commit se queda fuera de cualquier rama.
 
-### 11. ¿Qué comando o comandos utilizaste en el paso 30?
+### 11. ¿Qué comando o comandos utilizaste en el paso 30?
 
 Hago un `checkout` al *commit* en el que añadí el título.
 Para localizar dicho *commit* reviso el `reflog`:
@@ -141,7 +142,7 @@ Y vuelvo a hacer el mismo merge del punto 26 desde la rama **master**.
 $ git merge --no-ff title
 ```
 
-### 12. ¿Qué comando o comandos usaste en el paso 32?
+### 12. ¿Qué comando o comandos usaste en el paso 32?
 
 Volvemos al primer commit, cuando se creó el poema, con el siguiente comando:
 
@@ -150,7 +151,7 @@ $ git checkout e36a8e7
 ```
 En este caso tenemos HEAD suelto (detached HEAD) ya que no hay ninguna ramma en ese commit.
 
-### 13. ¿Qué comando o comandos usaste en el paso 33?
+### 13. ¿Qué comando o comandos usaste en el paso 33?
 Al conservar la rama **master** en el commit final, solo tenemos que dirigirnos a dicha rama:
 
 ```
